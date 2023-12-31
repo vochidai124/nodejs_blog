@@ -5,7 +5,14 @@ const exphbs = require('express-handlebars');
 const app = express();
 const port = 3000;
 
+// Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Configure middleware to process data from HTTP requests
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(express.json());
 
 // HTTP logger
 app.use(morgan('combined'));
